@@ -5,7 +5,7 @@
     <h2>Update Book</h2>
 
     <form method="post" action="{{route('books.update')}}" >
-
+        @method('PUT')
         @csrf
         <input type="hidden" name="id" value="{{$book->id}}">
         <div class="form-group">
