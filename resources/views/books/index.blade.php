@@ -36,10 +36,9 @@
                 <td><a href="{{ route('books.show', $book->id )  }}">View</a></td>
                 <td><a href="{{ route('books.edit', $book->id )  }}">Edit</a></td>
                 <td>
-                    <form  method="post" action="{{route('books.destroy')}}" onsubmit="return confirm('Sure?')">
+                    <form  method="post" action="{{route('books.destroy', $book->id)}}" onsubmit="return confirm('Sure?')">
                         @method('delete')
                         @csrf
-                        <input type="hidden" name="id" value="{{$book->id}}">
                         <input type="submit" style="padding: 0; margin: 0" value="Delete" class="btn btn-link text-danger"/>
                     </form>
                 </td>

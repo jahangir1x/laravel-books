@@ -4,10 +4,9 @@
 @section('page-content')
     <h2>Update Book</h2>
 
-    <form method="post" action="{{route('books.update')}}" >
+    <form method="post" action="{{route('books.update', $book->id)}}" >
         @method('PUT')
         @csrf
-        <input type="hidden" name="id" value="{{$book->id}}">
         <div class="form-group">
             <label for="exampleInputEmail1">Title</label>
             <input type="text" class="form-control" name="title" value="{{old('title',  $book->title )}}"  placeholder="Enter Title">

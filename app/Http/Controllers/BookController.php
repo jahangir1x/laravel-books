@@ -79,7 +79,7 @@ class BookController extends Controller
             ->with('book', $book);
     }
 
-    public function update(Request $request)
+    public function update($bookId, Request $request)
     {
         $rules = [
             'title'  => 'required|max:255',
@@ -91,7 +91,7 @@ class BookController extends Controller
 
         $this->validate($request, $rules);
 
-        $book = Book::find($request->id);
+        $book = Book::find($bookId);
 
         $book->title = $request->title;
         $book->author = $request->author;
@@ -104,9 +104,9 @@ class BookController extends Controller
 
     }
 
-    public function destroy(Request $request)
+    public function destroy($bookId, Request $request)
     {
-        $book = Book::find($request->id);
+        $book = Book::find($bookId);
         $book->delete();
 
         return redirect()->route('books.index');
