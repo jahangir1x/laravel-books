@@ -30,10 +30,8 @@ class BookController extends Controller
 
     }
 
-    public function show($book_id)
+    public function show(Book $book)
     {
-        $book = Book::find($book_id);
-
         return view('books.show')
             ->with('book', $book);
 
@@ -71,15 +69,13 @@ class BookController extends Controller
     }
 
 
-    public function edit($bookId)
+    public function edit(Book $book)
     {
-      $book = Book::find($bookId);
-
       return view('books.edit')
             ->with('book', $book);
     }
 
-    public function update($bookId, Request $request)
+    public function update(Book $book, Request $request)
     {
         $rules = [
             'title'  => 'required|max:255',
@@ -90,8 +86,6 @@ class BookController extends Controller
         ];
 
         $this->validate($request, $rules);
-
-        $book = Book::find($bookId);
 
         $book->title = $request->title;
         $book->author = $request->author;
@@ -104,9 +98,8 @@ class BookController extends Controller
 
     }
 
-    public function destroy($bookId, Request $request)
+    public function destroy(Book $book, Request $request)
     {
-        $book = Book::find($bookId);
         $book->delete();
 
         return redirect()->route('books.index');
