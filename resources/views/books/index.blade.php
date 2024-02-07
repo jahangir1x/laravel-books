@@ -5,16 +5,12 @@
 
     <div class="row">
         <div class="col-lg-10">
-            <form method="get" action="{{route('books.index')}}">
-                <div class="form-row">
-                    <div class="col-8">
-                        <input type="text" class="form-control" id="search" name="search" placeholder="Search"
-                               value="{{ request('search') }}">
-                    </div>
-                    <div class="col">
-                        <button type="submit" class="btn btn-default">Search</button>
+            <form method="get" action="{{ route('books.index') }}">
+                <div class="input-group mb-3">
+                    <input type="text" name="search" class="form-control" placeholder="Search for..."
+                           value="{{ request()->get('search') }}">
+                    <button class="btn btn-primary" type="submit" id="button-addon2">Search</button>
 
-                    </div>
                 </div>
             </form>
         </div>

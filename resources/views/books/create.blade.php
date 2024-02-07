@@ -10,8 +10,10 @@
         <div class="form-group">
             <label for="exampleInputEmail1">Title</label>
             <input type="text" class="form-control" name="title" value="{{old('title')}}"  placeholder="Enter Title">
-            <div>{{$errors->first('title')}}</div>
-        </div>
+            @if($errors->first('title'))
+                <div class="alert alert-danger" role="alert">{{$errors->first('title')}}</div>
+            @endif
+            </div>
 
         <div class="form-group">
             <label for="exampleInputEmail1">Author</label>
